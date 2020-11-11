@@ -96,6 +96,46 @@ class LoginController extends Controller
         // }
         
     }
+    public function u_search(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'full_name' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return back()->withErrors($errors)->withInput($request->input());
+        }
+
+        $name = $request->input('full_name');
+
+        $user = DB::table('user_table')->select('*')->where('full_name' , 'LIKE' , "%$name%" )->paginate(4);
+        return view('auth.usearch',['users' => $user]);
+    }
+    public function c_search(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'company_name' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return back()->withErrors($errors)->withInput($request->input());
+        }
+
+        $name = $request->input('company_name');
+
+        $coms = DB::table('login_table')->select('*')->where('company_name' , 'LIKE' , "%$name%" )->paginate(4);
+        return view('auth.csearch',['coms' => $coms]);
+    }
+    public function user_search()
+    {
+        return view('auth.usearch');
+    }
+    public function company_search()
+    {
+        return view('auth.csearch');
+    }
 //     public function gnm_list()
 //     {
 //         $users = DB::table('nurse_aaya_profile')->paginate(4);

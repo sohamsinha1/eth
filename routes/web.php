@@ -59,6 +59,12 @@ Route::get('/users_list',[App\Http\Controllers\Auth\LoginController::class, 'use
 Route::get('/company_list',[App\Http\Controllers\Auth\LoginController::class, 'company_list']);
 Route::get('/company_user/{id}',[App\Http\Controllers\Auth\LoginController::class, 'company_user'])->name('company.list');
 Route::get('/logout',[App\Http\Controllers\Auth\LoginController::class, 'logout']);
+Route::get('/company_search',[App\Http\Controllers\Auth\LoginController::class, 'company_search']);
+Route::get('/user_search',[App\Http\Controllers\Auth\LoginController::class, 'user_search']);
+
+Route::post('/c_search',[App\Http\Controllers\Auth\LoginController::class, 'c_search'])->name('company.search');
+Route::post('/u_search',[App\Http\Controllers\Auth\LoginController::class, 'u_search'])->name('user.search');
+
 // Route::get('/doctor_verify',[App\Http\Controllers\Auth\LoginController::class, 'image_view']);
 // Route::DELETE('/pat_del/{id}',[App\Http\Controllers\Auth\LoginController::class, 'pat_del'])->name('patient.destroy');
 // Route::DELETE('/doc_del/{id}',[App\Http\Controllers\Auth\LoginController::class, 'doc_del'])->name('doctor.destroy');

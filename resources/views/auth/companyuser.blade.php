@@ -7,6 +7,14 @@
 <li class="nav-item">
 <a class="nav-link" href="{{ url('/company_list') }}">Companies</a>
 </li>
+
+<li class="nav-item">
+<a class="nav-link" href="{{ url('/user_search') }}">User Search</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="{{ url('/company_search') }}">Company Search</a>
+</li>
 @endsection
 @section('content')
 
